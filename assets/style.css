@@ -6,25 +6,41 @@ html {
 }
 
 body {
-  background-image: url('https://github.com/twopcz/HW-5/blob/master/assets/images/dot-grid.png?raw=true');
+  background: url(basket-wave.html) no-repeat center center fixed;
+  -moz-background-size: cover;
+   -webkit-background-size: cover;
+   -o-backround-size: cover;
+  
 }
+
+i{
+  color: lightgray;
+}
+
+
 
 th {
   background-color: white;
+  border: 2px solid double black;
+  border-radius: 5px;
+  
 }
 
-th,
+
 td {
-  border-right: 1px solid lightgrey;
+  border: 2px solid double black;
+  border-radius: 5px;
+
 }
 
 .time {
-    border-left: 1px solid lightgray;
+    border: 2px solid black;
 }
 
 .input-cell {
     padding: 0px !important;
     position: relative;
+  
 }
 
 .input-area {
@@ -34,10 +50,12 @@ td {
     border: 0;
     padding: 5px 0px 0px 10px;
     position: absolute;
+    border-radius: 5px;
 }
 
 .save-button-cell {
-  background-color: lightgrey;
+  background-color: blueviolet;
+  border-radius: 5px;
 }
 
 .time,

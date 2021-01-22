@@ -82,7 +82,7 @@ $(document).ready(function() {
     } else {
       currentYear = moment().format('YYYY');
       $('#title-time').html(
-        'Here is your schedule for today. The current time is: '
+        'A simple calender app for your work today. The current time is: '
       );
       $('#title-year').html(currentYear);
       $('#dynamic-time').show();
