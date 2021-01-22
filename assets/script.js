@@ -52,18 +52,16 @@ $(document).ready(function() {
 
   function updateTime(differentDate) {
     if (differentDate !== date) {
-      var currentDate = moment().format('dddd, MMMM Do');
-      var currentYear = moment().format('YYYY');
+      var currentDate = moment().format('dddd, MMMM YYYY');
+    
       $('#title-date').html(currentDate);
-      $('#title-year').html(currentYear);
+  
       dynamicTime();
     }
 
     if (day < 0) {
       $('#title-date').html(differentDate);
-      $('#title-time').html(
-        'Here is what your schedule looked like for this day.'
-      );
+      $('#title-time').html();
       $('#dynamic-time').hide();
 
       var dayOfYear = moment().dayOfYear();
@@ -81,9 +79,7 @@ $(document).ready(function() {
       $('#dynamic-time').hide();
     } else {
       currentYear = moment().format('YYYY');
-      $('#title-time').html(
-        'A simple calender app for your work today. The current time is: '
-      );
+      $('.lead').html();
       $('#title-year').html(currentYear);
       $('#dynamic-time').show();
       dynamicTime();

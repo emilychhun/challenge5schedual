@@ -12,6 +12,19 @@ body {
    -o-backround-size: cover;
   
 }
+.jumbotron {
+  background-color: blueviolet;
+  border: dotted;
+  justify-content: space-between;
+  display: flex;
+}
+
+#title-date{
+  font-size: 50px;
+  color: white;
+  
+}
+
 
 i{
   color: lightgray;
@@ -20,9 +33,10 @@ i{
 
 
 th {
-  background-color: white;
+  background-color: black;
   border: 2px solid double black;
   border-radius: 5px;
+  color: greenyellow;
   
 }
 
