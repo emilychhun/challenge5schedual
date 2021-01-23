@@ -15,28 +15,59 @@ body {
 .jumbotron {
   background-color: blueviolet;
   border: dotted;
-  justify-content: space-between;
-  display: flex;
+
+}
+li  {
+  list-style: none;
 }
 
-#title-date{
-  font-size: 50px;
-  color: white;
+#schedule-date{
+  font-size: 70px;
+  color: black;
+}
+.page1{
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+
+.page-item {
+  margin-left: 20px;
+}
+
+
+button {
+  border-radius: 10px ;
+
+}
+
+
+
+#app{
+  text-align: center;
+  color: antiquewhite;
+}
+
+i{
+  color: greenyellow;
+
+}
+.container1{
+  justify-content: space-around;
+  display: inline;
+  align-content: center;
+  display: flex;
   
 }
 
 
-i{
-  color: lightgray;
-}
-
-
-
 th {
   background-color: black;
-  border: 2px solid double black;
+  border: 2px solid double black ;
   border-radius: 5px;
   color: greenyellow;
+  
   
 }
 
@@ -47,9 +78,7 @@ td {
 
 }
 
-.time {
-    border: 2px solid black;
-}
+
 
 .input-cell {
     padding: 0px !important;
@@ -68,22 +97,54 @@ td {
 }
 
 .save-button-cell {
-  background-color: blueviolet;
+  background-color: black;
   border-radius: 5px;
 }
 
-.time,
-.save-button-cell {
+.time{
+  
+    width: 5%;
+    
+}
+
+
+
+#save-1100 {
   width: 5%;
+  background-color: black;
+  }
+
+
+  #clear-schedule{
+  background-color: red;
 }
 
-#title-date, #title-time {
-    margin: 0;
+.button-container{
+  display: flex;
+  justify-content: space-between;
+
 }
 
-.sticky-footer {
-  bottom: 0px;
-  position: absolute;
+
+
+footer {
+
   width: 100%;
+  background-color: lightgray;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+
 }
 
+.text-note{
+  margin-left: 20px;
+  margin-right: 50px;
+}
+a{
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-style:oblique;
+  margin-right: 50px;
+  
+}
