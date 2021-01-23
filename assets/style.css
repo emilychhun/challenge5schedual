@@ -1,4 +1,5 @@
 
+
   
 html {
   min-height: 100%;
@@ -17,11 +18,14 @@ body {
   border: dotted;
 
 }
+
+
+
 li  {
   list-style: none;
 }
 
-#schedule-date{
+#title-date{
   font-size: 70px;
   color: black;
 }
@@ -148,3 +152,4 @@ a{
   margin-right: 50px;
   
 }
+

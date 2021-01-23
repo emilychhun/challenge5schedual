@@ -1,13 +1,12 @@
 
-
   
-let schedule1 = [];
-let schedule2 = {};
-let date1 = [];
-let date2 = {};
-/*let saveSchedule;*/
-let savedDate;
-let now = moment().format('LL');
+var scheduleArr = [];
+var scheduleObj = {};
+var dateArr = [];
+var dateObj = {};
+var storedSchedule;
+var savedSchedule;
+var date = moment().format('LL');
 previous = 0;
 next = 0;
 day = 0;
@@ -16,92 +15,102 @@ $(document).ready(function() {
   init();
 
   function init() {
-    todaysDate();
-    updateDay();
-    timeMove();
-    displayTable();
-    tableFocus();
-    saveTable();
-    clearEvent();
+    storeTodaysDate();
+    changeDay();
+    updateTime();
+    displaySchedule();
+    scheduleFocus();
+    saveEvent();
+    clearSchedule();
   }
 
-  function todaysDate() {
-    savedDate = JSON.parse(localStorage.getItem(now));
+  function storeTodaysDate() {
+    savedSchedule = JSON.parse(localStorage.getItem(date));
 
-    if (savedDate === null) {
-      console.log();
-      date2[''] = now;
-      date1.push(dateObj);
-      localStorage.setItem(now, JSON.stringify(date1));
+    if (savedSchedule === null) {
+      console.log('creating');
+      dateObj['date'] = date;
+      dateArr.push(dateObj);
+      localStorage.setItem(date, JSON.stringify(dateArr));
     }
   }
 
-  function differentDate() {
-    let existingStorage = JSON.parse(localStorage.getItem(now));
+  function storeDifferentDate() {
+    var existingStorage = JSON.parse(localStorage.getItem(date));
 
     if (existingStorage !== null) {
-      schedule1 = existingStorage;
+      scheduleArr = existingStorage;
     } else {
       currentDateObj = {};
       currentDateArr = [];
-      currentDateObj[''] = now;
+      currentDateObj['date'] = date;
       currentDateArr.push(currentDateObj);
-      localStorage.setItem(now, JSON.stringify(currentDateArr));
+      localStorage.setItem(date, JSON.stringify(currentDateArr));
     }
   }
 
-  function timeMove(differentDate) {
-    if (differentDate !== now) {
-      let currentDate = moment().format('dddd, MMMM YYYY');
-       $('#schedule-date').html(currentDate);
-       dynamicTime();
+  function updateTime(differentDate) {
+    if (differentDate !== date) {
+      var currentDate = moment().format('dddd, MMMM Do');
+      var currentYear = moment().format('YYYY');
+      $('#title-date').html(currentDate);
+      $('#title-year').html(currentYear);
+      dynamicTime();
     }
 
     if (day < 0) {
-      $('#schedule-date1').html(differentDate);
+      $('#title-date').html(differentDate);
+      $('#title-time').html(
+        'Here is what your schedule looked like for this day.'
+      );
       $('#dynamic-time').hide();
 
-    var dayOfYear = moment().dayOfYear();
+      var dayOfYear = moment().dayOfYear();
       if (dayOfYear + day === 0) {
         currentYear = previousDate.format('YYYY');
-    
+        $('#title-year').html(currentYear);
       }
     } else if (day > 0) {
       currentYear = nextDate.format('YYYY');
-      $('#schedule-date1').html(differentDate);
+      $('#title-date').html(differentDate);
+      $('#title-time').html(
+        'Here is what your schedule looks like for this day so far.'
+      );
       $('#title-year').html(currentYear);
       $('#dynamic-time').hide();
     } else {
       currentYear = moment().format('YYYY');
-      $('.lead').html();
-
+      $('#title-time').html(
+        'Here is your schedule for today. The current time is: '
+      );
+      $('#title-year').html(currentYear);
       $('#dynamic-time').show();
       dynamicTime();
     }
   }
 
   function dynamicTime() {
-    let currentTime = moment().format('HH:mm:ss');
+    var currentTime = moment().format('HH:mm:ss');
     $('#dynamic-time').text(currentTime);
     setInterval(dynamicTime, 1000);
   }
 
-  function tableFocus() {
-    let currentHourInt = parseInt(moment().format('HH'));
+  function scheduleFocus() {
+    var currentHourInt = parseInt(moment().format('HH'));
 
-    let timeIDs = $('#schedule-table tr[id]')
+    var timeIDs = $('#schedule-table tr[id]')
       .map(function() {
         return this.id;
       })
       .get();
 
     if (day < 0) {
-      $('.input-area').css('background-color', 'gray');
+      $('.input-area').css('background-color', 'grey');
     } else if (day > 0) {
       $('.input-area').css('background-color', 'lightblue');
     } else {
-      for (let i = 0; i < timeIDs.length; i++) {
-        let timeIDsInt = parseInt(timeIDs[i]);
+      for (var i = 0; i < timeIDs.length; i++) {
+        var timeIDsInt = parseInt(timeIDs[i]);
         if (timeIDsInt < currentHourInt) {
           $('#' + timeIDs[i])
             .find('textarea')
@@ -120,109 +129,108 @@ $(document).ready(function() {
     // setInterval(scheduleFocus, 1000);
   }
 
-  function clearEvent() {
-    $('#clear-schedule').on('click', function() {
-      schedule2 = {};
-      schedule1.length = 0;
-      schedule2[''] = now;
-      schedule1.push(schedule2);
+  function clearSchedule() {
+    $('#clear-button').on('click', function() {
+      scheduleObj = {};
+      scheduleArr.length = 0;
+      scheduleObj['date'] = date;
+      scheduleArr.push(scheduleObj);
 
-      localStorage.removeItem(now);
+      localStorage.removeItem(date);
       $('.input-area').val('');
 
-      localStorage.setItem(now, JSON.stringify(schedule1));
+      localStorage.setItem(date, JSON.stringify(scheduleArr));
     });
   }
 
-  function displayTable() {
-    savedDate = JSON.parse(localStorage.getItem(now));
+  function displaySchedule() {
+    savedSchedule = JSON.parse(localStorage.getItem(date));
     $('.input-area').val('');
-    for (let i = 0; i < savedDate.length; i++) {
-      let getKey = Object.keys(savedDate[i]);
-      let getValue = Object.values(savedDate[i]);
+    for (var i = 0; i < savedSchedule.length; i++) {
+      var getKey = Object.keys(savedSchedule[i]);
+      var getValue = Object.values(savedSchedule[i]);
       $('#area-' + getKey).val(getValue[0]);
     }
   }
 
-  function updateDay() {
-    $('.page1').on('click', function(e) {
-      let dayButtonID = e.target.id;
+  function changeDay() {
+    $('nav').on('click', function(e) {
+      var dayButtonID = e.target.id;
 
       if (dayButtonID === 'previous-day') {
         day--;
         changeActive(dayButtonID);
 
         previousDate = moment().add(day, 'days');
-        now = previousDate.format('LL');
-        differentDate();
-        timeMove(previousDate.format('dddd, MMMM Do'));
-        displayTable();
-        tableFocus();
-        return now;
+        date = previousDate.format('LL');
+        storeDifferentDate();
+        updateTime(previousDate.format('dddd, MMMM Do'));
+        displaySchedule();
+        scheduleFocus();
+        return date;
       } else if (dayButtonID === 'next-day') {
         day++;
         changeActive(dayButtonID);
 
         nextDate = moment().add(day, 'days');
-        now = nextDate.format('LL');
-        differentDate();
-        timeMove(nextDate.format('dddd, MMMM Do'));
-        displayTable();
-        tableFocus();
-        return now;
+        date = nextDate.format('LL');
+        storeDifferentDate();
+        updateTime(nextDate.format('dddd, MMMM Do'));
+        displaySchedule();
+        scheduleFocus();
+        return date;
       } else {
         day = 0;
         dayButtonID = 'current-day';
         changeActive(dayButtonID);
 
-        now = moment().format('LL');
+        date = moment().format('LL');
         $('.input-area').val('');
-        timeMove();
-        displayTable();
-        tableFocus();
-        return now;
+        updateTime();
+        displaySchedule();
+        scheduleFocus();
+        return date;
       }
     });
   }
 
   function changeActive(page) {
-    let activeClass = $('.active');
+    var activeClass = $('#change-div>nav>ul>li.active');
 
-    schedule1.length = 0;
+    scheduleArr.length = 0;
     activeClass.removeClass('active');
     $('#' + page)
       .parent('li')
       .addClass('active');
   }
 
-  function saveTable() {
+  function saveEvent() {
     $('.save-button').on('click', function() {
       var trId = $(this)
         .closest('tr')
         .attr('id');
-      let textAreaVal = $(this)
+      var textAreaVal = $(this)
         .closest('tr')
         .find('textarea')
         .val()
         .trim();
 
-      saveSchedule = JSON.parse(localStorage.getItem(now));
-      schedule2 = {};
+      storedSchedule = JSON.parse(localStorage.getItem(date));
+      scheduleObj = {};
 
-      schedule2[trId] = textAreaVal;
-      schedule1.push(schedule2);
-      localStorage.setItem(date, JSON.stringify(schedule1));
+      scheduleObj[trId] = textAreaVal;
+      scheduleArr.push(scheduleObj);
+      localStorage.setItem(date, JSON.stringify(scheduleArr));
 
-      for (let i = 0; i < saveSchedule.length; i++) {
-        if (saveSchedule[i].hasOwnProperty(trId)) {
-          saveSchedule[i][trId] = textAreaVal;
-          schedule1 = saveSchedule;
-          localStorage.setItem(date, JSON.stringify(schedule1));
+      for (var i = 0; i < storedSchedule.length; i++) {
+        if (storedSchedule[i].hasOwnProperty(trId)) {
+          storedSchedule[i][trId] = textAreaVal;
+          scheduleArr = storedSchedule;
+          localStorage.setItem(date, JSON.stringify(scheduleArr));
           return;
         }
       }
     });
   }
 });
-
 
