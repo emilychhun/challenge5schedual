@@ -1,15 +1,23 @@
 
-  
-var plan1 = [];
-var plan2 = {};
-var dateA = [];
-var dateB = {};
-var storeDate;
-var savedDate;
-var period = moment().format('LL');
+ 
+let plan1 = [];
+let plan2 = {};
+let dateA = [];
+let dateB = {};
+let scheduleArray =[{time:"", text:""}];
+let savedDate = [];
+let period = moment().format('LL');
 previous = 0;
 next = 0;
 day = 0;
+
+function saveDate(index, time, text)
+{
+  scheduleArray[index] = time
+  scheduleArray[index] = text 
+
+  localStorage.setItem('tasks', scheduleArray)
+}
 
 $(document).ready(function() {
   init();
@@ -23,99 +31,92 @@ $(document).ready(function() {
     storeEvent();
     resetSchedule();
   }
-
+  //save current date to localstorage
   function todaysDate() {
     savedDate = JSON.parse(localStorage.getItem(period));
 
     if (savedDate === null) {
-      console.log('creating');
-      dateB['date'] = period;
+      console.log();
+      dateB[''] = period;
       dateA.push(dateB);
       localStorage.setItem(period, JSON.stringify(dateA));
     }
   }
-
+//save previouse and furture localstorage
   function changeDate() {
-    var existingStorage = JSON.parse(localStorage.getItem(period));
+    let existingStorage = JSON.parse(localStorage.getItem(period));
 
     if (existingStorage !== null) {
       plan1 = existingStorage;
     } else {
       currentDateObj = {};
       currentDateArr = [];
-      currentDateObj['date'] = period;
+      currentDateObj[''] = period;
       currentDateArr.push(currentDateObj);
       localStorage.setItem(period, JSON.stringify(currentDateArr));
     }
   }
-
-  function timeChange (differentDate) {
+     //set date, month, year for  current date
+   function timeChange (differentDate) {
     if (differentDate !== period) {
-      var currentDate = moment().format('dddd, Do, MMMM, YYYY');
-      var currentYear = moment().format('YYYY');
+      let currentDate = moment().format('dddd MMMM Do, YYYY');
+    
       $('#title-date').html(currentDate);
-      $('#title-year').html(currentYear);
-      dynamicTime();
+   
+    //  dynamicTime();
     }
 
+   //if date was past, show date, but hide time
     if (day < 0) {
       $('#title-date').html(differentDate);
-      $('#title-time').html(
-        'Here is what your schedule looked like for this day.'
-      );
-      $('#dynamic-time').hide();
+     $('#dynamic-time').hide();
+// if date is future, show date, but hide time
 
-      var dayOfYear = moment().dayOfYear();
-      if (dayOfYear + day === 0) {
-        currentYear = previousDate.format('YYYY');
-        $('#title-year').html(currentYear);
-      }
-    } else if (day > 0) {
-      currentYear = nextDate.format('YYYY');
+   } else if (day > 0) {
+      
       $('#title-date').html(differentDate);
-      $('#title-time').html(
-        'Here is what your schedule looks like for this day so far.'
-      );
-      $('#title-year').html(currentYear);
       $('#dynamic-time').hide();
-    } else {
-      currentYear = moment().format('YYYY');
-      $('#title-time').html(
-        'Here is your schedule for today. The current time is: '
-      );
-      $('#title-year').html(currentYear);
+ 
+    //if date is current, show date and time
+  } else {
+     
       $('#dynamic-time').show();
       dynamicTime();
     }
   }
 
+  //set the time
   function dynamicTime() {
-    var currentTime = moment().format('HH:mm:ss');
+    let currentTime = moment().format('HH:mm:ss');
     $('#dynamic-time').text(currentTime);
     setInterval(dynamicTime, 1000);
   }
-
+// tracking color by date
   function planFocus() {
-    var currentHourInt = parseInt(moment().format('HH'));
+    let currentHourInt = parseInt(moment().format('HH'));
 
-    var timeIDs = $('#schedule-table tr[id]')
+    let timeIDs = $('#schedule-table tr[id]')
       .map(function() {
         return this.id;
       })
       .get();
-
+//if time was past, inpute area was grey
     if (day < 0) {
       $('.input-area').css('background-color', 'grey');
+  //if time is future, inpute area is green     
     } else if (day > 0) {
       $('.input-area').css('background-color', '#3CB371');
+   
     } else {
-      for (var i = 0; i < timeIDs.length; i++) {
-        var timeIDsInt = parseInt(timeIDs[i]);
+      for (let i = 0; i < timeIDs.length; i++) {
+        let timeIDsInt = parseInt(timeIDs[i]);
         if (timeIDsInt < currentHourInt) {
           $('#' + timeIDs[i])
             .find('textarea')
             .css('background-color', 'grey');
-        } else if (timeIDsInt === currentHourInt) {
+
+   //if time is current, inpute area is purpose   
+          } else if (timeIDsInt === currentHourInt) {
           $('#' + timeIDs[i])
             .find('textarea')
             .css('background-color', '#C71585');
@@ -126,10 +127,12 @@ $(document).ready(function() {
         }
       }
     }
-    // setInterval(planFocus, 1000);
+   
   }
 
-  function resetSchedule() {
+//set resetbutton schedule
+
+ function resetSchedule() {
     $('#clear-button').on('click', function() {
       plan2 = {};
       plan1.length = 0;
@@ -143,19 +146,41 @@ $(document).ready(function() {
     });
   }
 
-  function showSchedule() {
+   function showSchedule() {
     savedDate = JSON.parse(localStorage.getItem(period));
     $('.input-area').val('');
-    for (var i = 0; i < savedDate.length; i++) {
-      var getKey = Object.keys(savedDate[i]);
-      var getValue = Object.values(savedDate[i]);
+    for (let i = 0; i < savedDate.length; i++) {
+      let getKey = Object.keys(savedDate[i]);
+      let getValue = Object.values(savedDate[i]);
       $('#area-' + getKey).val(getValue[0]);
     }
   }
+  
+  
+  
+  function addDailySchedule() {
+    
+    scheduleArr = JSON.parse(localStorage.getItem(tasks));
+    for (let i =0; i < 9; i++)
+    {
+      // looks for json local storage value. If it cant find ith then replaces it with a empty string 
+      let inputText =  $(this).siblings("#input-area" + i + 1).val();
+      inputText = key;
 
-  function nextDay() {
+      
+    }
+  -
+  }
+
+
+
+
+
+//set date for previous day
+  
+function nextDay() {
     $('ul').on('click', function(e) {
-      var dayButtonID = e.target.id;
+      let dayButtonID = e.target.id;
 
       if (dayButtonID === 'previous-day') {
         day--;
@@ -164,10 +189,14 @@ $(document).ready(function() {
         previousDate = moment().add(day, 'days');
         period = previousDate.format('LL');
         changeDate();
-        timeChange(previousDate.format('dddd, MMMM Do'));
+        timeChange(previousDate.format('dddd MMMM Do, YYYY'));
         showSchedule();
         planFocus();
         return period;
+    
+    //set date for next date
+    
+    
       } else if (dayButtonID === 'next-day') {
         day++;
         changeActive(dayButtonID);
@@ -175,11 +204,13 @@ $(document).ready(function() {
         nextDate = moment().add(day, 'days');
         period = nextDate.format('LL');
         changeDate();
-        timeChange(nextDate.format('dddd, MMMM Do'));
+        timeChange(nextDate.format('dddd MMMM Do, YYYY'));
         showSchedule();
         planFocus();
         return period;
-      } else {
+    //return back from previous date and next date to current date
+    
+      }else {
         day = 0;
         dayButtonID = 'current-day';
         changeActive(dayButtonID);
@@ -194,8 +225,10 @@ $(document).ready(function() {
     });
   }
 
-  function changeActive(page) {
-    var activeClass = $('#change-div>ul>li.active');
+ //flext date
+ 
+ function changeActive(page) {
+    let activeClass = $('#change-div>ul>li.active');
 
     plan1.length = 0;
     activeClass.removeClass('active');
@@ -204,12 +237,13 @@ $(document).ready(function() {
       .addClass('active');
   }
 
-  function storeEvent() {
-    $('.save-button').on('click', function() {
-      var trId = $(this)
+//save schedule to localstorage
+ function storeEvent() {
+    $('#btn').on('click', function() {
+      let inputeId = $(this)
         .closest('tr')
         .attr('id');
-      var textAreaVal = $(this)
+      let textAreaVal = $(this)
         .closest('tr')
         .find('textarea')
         .val()
@@ -222,9 +256,9 @@ $(document).ready(function() {
       plan1.push(plan2);
       localStorage.setItem(period, JSON.stringify(plan1));
 
-      for (var i = 0; i < storedDate.length; i++) {
+      for (let i = 0; i < storedDate.length; i++) {
         if (storedDate[i].hasOwnProperty(trId)) {
-          storedDate[i][trId] = textAreaVal;
+          storedDate[i][inputeId] = textAreaVal;
           plan1 = storedDate;
           localStorage.setItem(period, JSON.stringify(plan1));
           return;
@@ -234,3 +268,9 @@ $(document).ready(function() {
   }
 });
 
+/*let dailySchedule =[];
+let addDailySchedule= (ev)=>{
+  ev.preventDefault();
+document.addEventListener('DOMContendLoad', ()=>{
+document.getElementById('btn').addEventListener('click', addDailySchedule)
+});*/
