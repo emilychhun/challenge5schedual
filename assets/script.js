@@ -154,7 +154,7 @@ $(document).ready(function() {
   }
 
   function changeDay() {
-    $('nav').on('click', function(e) {
+    $('ul').on('click', function(e) {
       var dayButtonID = e.target.id;
 
       if (dayButtonID === 'previous-day') {
@@ -195,7 +195,7 @@ $(document).ready(function() {
   }
 
   function changeActive(page) {
-    var activeClass = $('#change-div>nav>ul>li.active');
+    var activeClass = $('#change-div>ul>li.active');
 
     scheduleArr.length = 0;
     activeClass.removeClass('active');

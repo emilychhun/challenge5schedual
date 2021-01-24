@@ -33,170 +33,140 @@
             <div id="app">
               <p class="lead">A simple calender app for your work today. The current time is</p>
                 <h1 id="dynamic-time"></h1>
-        </div>
+             </div>
       
   
-      </div>
-   
-   
-   
-   
-    <div class="container">       
-       <table class="table">
+       </div>
+    </div>
+   <div class="container pb-5 mb-3">
+      <div class="table-responsive">
+        <table class="table">
           <tbody id="schedule-table">
-           
-           
-           
             <tr id="09">
-              <th scope="row">09:00</th>
+              <th scope="row" class="align-middle time">09:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-09"></textarea>
               </td>
               <td id="save-1100">
-           
+                <div class="text-center">
                   <button>
-                    
-                    
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-             
+                </div>
               </td>
             </tr>
-            
-            
-            
             <tr id="10">
-              <th scope="row">10:00</th>
+              <th scope="row" class="align-middle time">10:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-10"></textarea>
               </td>
               <td id="save-1100">
-              
+                <div class="text-center">
                   <button>
-                   
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-               
+                </div>
               </td>
             </tr>
-           
-           
-           
             <tr id="11">
-              <th scope="row">11:00</th>
+              <th scope="row" class="align-middle time">11:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-11"></textarea>
               </td>
               <td id="save-1100">
-              
+                <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-             
+                </div>
               </td>
             </tr>
-           
-           
-           
             <tr id="12">
-              <th scope="row">12:00</th>
+              <th scope="row" class="align-middle time">12:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-12"></textarea>
               </td>
               <td id="save-1100">
                 <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-                
+                </div>
               </td>
             </tr>
-           
-           
-           
             <tr id="13">
-              <th scope="row">13:00</th>
+              <th scope="row" class="align-middle time">13:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-13"></textarea>
               </td>
               <td id="save-1100">
                 <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-               
+                </div>
               </td>
             </tr>
-           
-           
-           
             <tr id="14">
-              <th scope="row">14:00</th>
+              <th scope="row" class="align-middle time">14:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-14"></textarea>
               </td>
               <td id="save-1100">
-           
+                <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-              
+                </div>
               </td>
             </tr>
-            
             <tr id="15">
-              <th scope="row">15:00</th>
+              <th scope="row" class="align-middle time">15:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-15"></textarea>
               </td>
               <td id="save-1100">
-          
+                <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-               
+                </div>
               </td>
             </tr>
-            
-            
             <tr id="16">
-              <th scope="row">16:00</th>
+              <th scope="row" class="align-middle time">16:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-16"></textarea>
               </td>
               <td id="save-1100">
-                
+                <div class="text-center">
                   <button>
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-               
+                </div>
               </td>
             </tr>
-           
-           
-           
             <tr id="17" class="border">
-              <th scope="row">17:00</th>
+              <th scope="row" class="align-middle time">17:00</th>
               <td class="input-cell">
-                <textarea class="input-area"></textarea>
+                <textarea class="input-area" id="area-17"></textarea>
               </td>
               <td id="save-1100">
-              
+                <div class="text-center">
                   <button>
-                  
-                    <i class="fas fa-save"></i>
+                    <i class="far fa-save"></i>
                   </button>
-             
+                </div>
               </td>
             </tr>
-         
           </tbody>
         </table>
        
        
         <div class="buton-container">
-          <div>
-            <nav >
+    
+          <div id="change-div">
+          
               <ul class="page1">
                 <li class="page-item" id="previous">
                   <a class="page-link" href="#" id="previous-day">Previous</a>
@@ -208,19 +178,17 @@
                   <a class="page-link" href="#" id="next-day">Next</a>
                 </li>
               </ul>
-            </nav>
-         
-         
-         
-          </div>
-         
-            <button id="clear-button">
-              Clear Schedule
-            </button>
+          
+           </div>
+          
+        
+           <div>
+
+            <button id="clear-button">Clear Schedule</button>
        
-        </div>
-      </div>
-    </div>
+           </div>
+         </div>
+    
 
     <footer class="footer">
     
