@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: url(basket-wave.html) no-repeat center center fixed;
+  background: lightsteelblue;
   -moz-background-size: cover;
    -webkit-background-size: cover;
    -o-backround-size: cover;
@@ -15,7 +15,7 @@ body {
   
 }
 .jumbotron {
-  background-color: blueviolet;
+  background-color: #708090;
   border: dotted;
 
 }
