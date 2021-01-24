@@ -158,7 +158,7 @@ $(document).ready(function() {
   
   
   
-  function addDailySchedule() {
+  /*function addDailySchedule() {
     
     scheduleArr = JSON.parse(localStorage.getItem(tasks));
     for (let i =0; i < 9; i++)
@@ -171,7 +171,7 @@ $(document).ready(function() {
     }
   -
   }
-
+*/
 
 
 
