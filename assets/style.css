@@ -12,6 +12,7 @@ body {
    -webkit-background-size: cover;
    -o-backround-size: cover;
   
+  
 }
 .jumbotron {
   background-color: blueviolet;
@@ -20,13 +21,13 @@ body {
 }
 
 
-
 li  {
   list-style: none;
+
 }
 
 #title-date{
-  font-size: 70px;
+  font-size: 50px;
   color: black;
 }
 .page1{
@@ -43,6 +44,7 @@ li  {
 
 button {
   border-radius: 10px ;
+  margin-left: 10px;
 
 }
 
@@ -55,7 +57,8 @@ button {
 
 i{
   color: greenyellow;
-
+font-size: large;
+ text-align: center;
 }
 .container1{
   justify-content: space-around;
@@ -72,7 +75,7 @@ th {
   border: 2px solid double black ;
   border-radius: 5px;
   color: greenyellow;
-  
+  font-size: 15PX;
   
 }
 
@@ -109,6 +112,7 @@ td {
 .time{
   
     width: 5%;
+
     
 }
 
@@ -120,8 +124,9 @@ td {
   }
 
 
-  #clear-schedule{
+  #clear-button{
   background-color: red;
+  margin-right: 75px;
 }
 
 .button-container{

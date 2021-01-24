@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   function updateTime(differentDate) {
     if (differentDate !== date) {
-      var currentDate = moment().format('dddd, MMMM Do');
+      var currentDate = moment().format('dddd, Do, MMMM, YYYY');
       var currentYear = moment().format('YYYY');
       $('#title-date').html(currentDate);
       $('#title-year').html(currentYear);
