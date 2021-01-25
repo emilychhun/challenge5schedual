@@ -1,11 +1,12 @@
 
- 
+ //set the variable
 let plan1 = [];
 let plan2 = {};
 let dateA = [];
 let dateB = {};
 let scheduleArray =[{time:"", text:""}];
 let savedDate = [];
+
 let period = moment().format('LL');
 previous = 0;
 next = 0;
@@ -30,6 +31,7 @@ $(document).ready(function() {
     planFocus();
     storeEvent();
     resetSchedule();
+    
   }
   //save current date to localstorage
   function todaysDate() {
@@ -44,10 +46,10 @@ $(document).ready(function() {
   }
 //save previouse and furture localstorage
   function changeDate() {
-    let existingStorage = JSON.parse(localStorage.getItem(period));
+    let activeStorage = JSON.parse(localStorage.getItem(period));
 
-    if (existingStorage !== null) {
-      plan1 = existingStorage;
+    if (activeStorage !== null) {
+      plan1 = activeStorage;
     } else {
       currentDateObj = {};
       currentDateArr = [];
@@ -57,8 +59,8 @@ $(document).ready(function() {
     }
   }
      //set date, month, year for  current date
-   function timeChange (differentDate) {
-    if (differentDate !== period) {
+   function timeChange (changeDate) {
+    if (changeDate !== period) {
       let currentDate = moment().format('dddd MMMM Do, YYYY');
     
       $('#title-date').html(currentDate);
@@ -68,13 +70,13 @@ $(document).ready(function() {
 
    //if date was past, show date, but hide time
     if (day < 0) {
-      $('#title-date').html(differentDate);
+      $('#title-date').html(changeDate);
      $('#dynamic-time').hide();
 // if date is future, show date, but hide time
 
    } else if (day > 0) {
       
-      $('#title-date').html(differentDate);
+      $('#title-date').html(changeDate);
       $('#dynamic-time').hide();
  
     //if date is current, show date and time
@@ -145,7 +147,7 @@ $(document).ready(function() {
       localStorage.setItem(period, JSON.stringify(plan1));
     });
   }
-
+//show schedule by different color
    function showSchedule() {
     savedDate = JSON.parse(localStorage.getItem(period));
     $('.input-area').val('');
@@ -158,27 +160,25 @@ $(document).ready(function() {
   
   
   
-  /*function addDailySchedule() {
-    
-    scheduleArr = JSON.parse(localStorage.getItem(tasks));
-    for (let i =0; i < 9; i++)
-    {
-      // looks for json local storage value. If it cant find ith then replaces it with a empty string 
-      let inputText =  $(this).siblings("#input-area" + i + 1).val();
-      inputText = key;
+/* 
+  function saveDate2(){
+    $('#but').on('click', function() {
+    for (let i =0; i < 9; i++) {
+     let inputText =  $(this).siblings("#input-area" + i + 1).val();
+         $('#btn' + inputText).val(inputTax[0]);
 
-      
+         localStorage.setItem(period, JSON.stringify(dateA));
+       
     }
-  -
-  }
-*/
+  
+  }*/
 
 
 
 
 //set date for previous day
   
-function nextDay() {
+     function nextDay() {
     $('ul').on('click', function(e) {
       let dayButtonID = e.target.id;
 
@@ -186,10 +186,10 @@ function nextDay() {
         day--;
         changeActive(dayButtonID);
 
-        previousDate = moment().add(day, 'days');
-        period = previousDate.format('LL');
+        lastDate = moment().add(day, 'days');
+        period = lastDate.format('LL');
         changeDate();
-        timeChange(previousDate.format('dddd MMMM Do, YYYY'));
+        timeChange(lastDate.format('dddd MMMM Do, YYYY'));
         showSchedule();
         planFocus();
         return period;
@@ -208,12 +208,12 @@ function nextDay() {
         showSchedule();
         planFocus();
         return period;
-    //return back from previous date and next date to current date
+    //return back from previous date or next date to current date
     
       }else {
         day = 0;
-        dayButtonID = 'current-day';
-        changeActive(dayButtonID);
+        currentDayButtonID = 'current-day';
+        changeActive(currentDayButtonID);
 
         period = moment().format('LL');
         $('.input-area').val('');
@@ -225,7 +225,7 @@ function nextDay() {
     });
   }
 
- //flext date
+ //flex date to allow to go last day and future
  
  function changeActive(page) {
     let activeClass = $('#change-div>ul>li.active');
@@ -249,12 +249,12 @@ function nextDay() {
         .val()
         .trim();
 
-      storedDate = JSON.parse(localStorage.getItem(period));
+      storedDate = JSON.parse(localStorage.getItem(scheduleArray));
       plan2 = {};
 
       plan2[trId] = textAreaVal;
       plan1.push(plan2);
-      localStorage.setItem(period, JSON.stringify(plan1));
+      localStorage.setItem(scheduleArray, JSON.stringify(plan1));
 
       for (let i = 0; i < storedDate.length; i++) {
         if (storedDate[i].hasOwnProperty(trId)) {
