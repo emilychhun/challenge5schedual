@@ -23,7 +23,7 @@
  
  
  
-  <body onload="loadMyStuff()">
+  <body>
   <!--header set date, time-->
       <div class="jumbotron">
          <div class="container1">
@@ -44,107 +44,107 @@
         
         
         <table class="table">
-          <tbody id="schedule-table" onload="get()">
+          <tbody id="schedule-table">
             
             
-            <tr id="09">
-              
+            <tr id="09" onload="get1()">
+             
                   <th class="time">9 AM</th>
                 <td class="input-cell">
                   <textarea class="input-area" id="input1" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" value="SAVE" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                   <button onclick="save1()" id="btn"><i class="fas fa-save" ></i></button>
                 </td>
             </tr>
            
            
-            <tr id="10">
+            <tr id="10" onload="get2()">
                    <th class="time">10 AM</th>
                  <td class="input-cell">
                    <textarea class="input-area" id="input2" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                   <button onclick="save2()" id="btn"><i class="fas fa-save" ></i></button>
                 </td>
             </tr>
            
            
-            <tr id="11">
+            <tr id="11" onload="get3()">
                   <th class="time">11 AM</th>
                 <td class="input-cell">
                    <textarea class="input-area" id="input3" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                   <button onclick="save3()" id="btn"><i class="fas fa-save" ></i></button>
                 </td>
             </tr>
          
          
-            <tr id="12">
+            <tr id="12" onload="get4()">
                    <th class="time">12 PM</th>
                 <td class="input-cell">
                    <textarea class="input-area" id="input4" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                   <button onclick="save4()" id="btn"><i class="fas fa-save" ></i></button>
                 </td>
             </tr>
            
            
-            <tr id="13">
+            <tr id="13" onload="get4()">
                    <th class="time">1 PM</th>
                 <td class="input-cell">
                    <textarea class="input-area" id="input5" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" onclick="saveMySuff()"><i class="fas fa-save" ></i> </button>
+                   <button onclick="save5()" id="btn" ><i class="fas fa-save" ></i> </button>
                 </td>
             </tr>
             
             
             
-            <tr id="14">
+            <tr id="14" onload="get5()">
                    <th class="time">2 PM</th>
                 <td class="input-cell">
-                   <textarea class="input-area" id="input6" placeholder="Your Schedule"></textarea>
+                   <textarea class="input-area" id="input5" placeholder="Your Schedule"></textarea>
                 </td>
                 <td id="save-1100">
-                   <button id="btn" onclick="saveMySuff()"><i class="far fa-save"></i></button>
+                   <button onclick="save5()" id="btn"><i class="far fa-save"></i></button>
                 </td>
             </tr>
          
          
-            <tr id="15">
+            <tr id="15" onload="get6()">
                     <th class="time">3 PM</th>
                  <td class="input-cell" id="input-cell1">
-                    <textarea class="input-area" id="input7" placeholder="Your Schedule"></textarea>
+                    <textarea class="input-area" id="input6" placeholder="Your Schedule"></textarea>
                  </td>
                  <td id="save-1100">
-                    <button id="btn" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                    <button onclick="save6()" id="btn"><i class="fas fa-save" ></i></button>
                  </td>
             </tr>
            
            
            
-            <tr id="16">
+            <tr id="16" onload="get7()">
                      <th class="time">4 PM</th>
                  <td class="input-cell">
-                     <textarea class="input-area" id="input8" placeholder="Your Schedule"></textarea>
+                     <textarea class="input-area" id="input7" placeholder="Your Schedule"></textarea>
                  </td>
                  <td id="save-1100">
-                     <button id="btn" onclick="saveMySuff()"><i class="fas fa-save"></i></button>
+                     <button onclick="save7()" id="btn"><i class="fas fa-save"></i></button>
                   </td>
             </tr>
             
            
-            <tr id="17" class="border">
+            <tr id="17" onload="get8()" class="border">
                      <th class="time">5 PM</th>
                   <td class="input-cell">
-                     <textarea class="input-area" id="input9" placeholder="Your Schedule"></textarea>
+                     <textarea class="input-area" id="input8" placeholder="Your Schedule"></textarea>
                   </td>
                   <td id="save-1100">
-                     <button id="btn" value= "SAVE" onclick="saveMySuff()"><i class="fas fa-save" ></i></button>
+                     <button onclick="save8()" id="btn"><i class="fas fa-save" ></i></button>
                   </td>
             </tr>
          
