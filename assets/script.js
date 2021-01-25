@@ -1,5 +1,98 @@
+function refreshMe(){
+  window,location.reload(true);
+}
 
- //set the variable
+function saveMyStuff(){
+document.getElementById("btn").style.backgroundColor="red";
+document.getElementById("btn").value ="SAVE!";
+
+let v1= document.getElementById("input1").value;
+localStorage.setItem('k1', v1);
+
+let v2= document.getElementById("input2").value;
+localStorage.setItem('k2', v2);
+
+let v3= document.getElementById("input3").value;
+localStorage.setItem('k3', v3);
+
+let v4= document.getElementById("input4").value;
+localStorage.setItem('k4', v4);
+
+let v5= document.getElementById("input5").value;
+localStorage.setItem('k5', v5);
+
+let v6= document.getElementById("input6").value;
+localStorage.setItem('k6', v6);
+
+let v7= document.getElementById("input7").value;
+localStorage.setItem('k7', v7);
+
+let v8= document.getElementById("input8").value;
+localStorage.setItem('k8', v8);
+
+let v9= document.getElementById("input9").value;
+localStorage.setItem('k9', v9);
+setTimeout(refreshMe,2000);
+
+}
+
+function loadMyStuff(){
+  let storedV1 = localStorage.getItem('k1');
+  if(storedV1){
+    document.getElementById("input1").value = storedV1;
+    document.getElementById("input1").setAttribute("class", "lime");
+  }
+
+  let storedV2 = localStorage.getItem('k2');
+  if(storedV2){
+    document.getElementById("input2").value = storedV2;
+    document.getElementById("input2").setAttribute("class", "lime");
+  }
+
+  let storedV3 = localStorage.getItem('k3');
+  if(storedV3){
+    document.getElementById("input3").value = storedV3;
+    document.getElementById("input3").setAttribute("class", "lime");
+  }
+  let storedV4 = localStorage.getItem('k4');
+  if(storedV4){
+    document.getElementById("input4").value = storedV4;
+    document.getElementById("input4").setAttribute("class", "lime");
+  }
+  let storedV5 = localStorage.getItem('k5');
+  if(storedV5){
+    document.getElementById("input5").value = storedV5;
+    document.getElementById("input5").setAttribute("class", "lime");
+  }
+
+  let storedV6 = localStorage.getItem('k6');
+  if(storedV6){
+    document.getElementById("input6").value = storedV6;
+    document.getElementById("input6").setAttribute("class", "lime");
+  }
+
+  let storedV7 = localStorage.getItem('k7');
+  if(storedV7){
+    document.getElementById("input7").value = storedV7;
+    document.getElementById("input7").setAttribute("class", "lime");
+  }
+
+  let storedV8 = localStorage.getItem('k8');
+  if(storedV8){
+    document.getElementById("input8").value = storedV8;
+    document.getElementById("input8").setAttribute("class", "lime");
+  }
+  let storedV9 = localStorage.getItem('k9');
+  if(storedV9){
+    document.getElementById("input9").value = storedV9;
+    document.getElementById("input9").setAttribute("class", "lime");
+  }
+
+
+}
+
+
+//set the variable
 let plan1 = [];
 let plan2 = {};
 let dateA = [];
@@ -268,9 +361,3 @@ $(document).ready(function() {
   }
 });
 
-/*let dailySchedule =[];
-let addDailySchedule= (ev)=>{
-  ev.preventDefault();
-document.addEventListener('DOMContendLoad', ()=>{
-document.getElementById('btn').addEventListener('click', addDailySchedule)
-});*/
